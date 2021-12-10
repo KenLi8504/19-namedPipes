@@ -15,12 +15,13 @@ int main(){
   char *toParent = "toParent";
   int pipeto = open(toChild,O_RDONLY);
   int pipefrom = open(toParent,O_WRONLY);
-  printf("The values of my pipes are %d and %d\n",pipeto,pipefrom);
-  //while (1){
+  //printf("The values of my pipes are %d and %d\n",pipeto,pipefrom);
+  while (1){
     read(pipeto,input,10000);
+    printf("Party!\n");
     strcpy(intermediate,input);
     printf("The child here received here was %s\n",input);
-    printf("The output here was %s\n",intermediate);
+    //printf("The output here was %s\n",intermediate);
     int counter = 0;
     for (int i = 0; intermediate[i]!='\0'; i++) {
       //printf("This char is %c\n",intermediate[i]);
@@ -51,8 +52,8 @@ int main(){
     }
     strcpy(output,intermediate);
     // printf("The length of the input is %ld\n",strlen(input));
-    printf("The output here was %s\n",intermediate);
+    //printf("The output here was %s\n",intermediate);
     write(pipefrom,output,10000);
-//}
+}
 return 0;
 }
