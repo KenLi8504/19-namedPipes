@@ -15,7 +15,8 @@ int main(){
   char *toParent = "toParent";
   int pipeto = open(toChild,O_RDONLY);
   int pipefrom = open(toParent,O_WRONLY);
-  while (1){
+  printf("The values of my pipes are %d and %d\n",pipeto,pipefrom);
+  //while (1){
     read(pipeto,input,10000);
     strcpy(intermediate,input);
     printf("The child here received here was %s\n",input);
@@ -52,6 +53,6 @@ int main(){
     // printf("The length of the input is %ld\n",strlen(input));
     printf("The output here was %s\n",intermediate);
     write(pipefrom,output,10000);
-}
+//}
 return 0;
 }
